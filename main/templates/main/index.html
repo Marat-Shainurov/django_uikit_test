@@ -20,27 +20,28 @@
     <h1>Simple calculations</h1>
 </div>
 
-<form class="uk-form-horizontal uk-margin-large">
-
+<form method="post" class="uk-form-horizontal uk-margin-large">
+    {% csrf_token %}
     <div class="uk-margin">
         <hr>
         <label class="uk-form-label" for="form-horizontal-text"></label>
         <div class="uk-form-controls">
             <input class="uk-input" id="form-horizontal-text" type="text" name="equation"
-                   placeholder="Input an arithmetic expression to calculate using Python-like syntax">
+                   placeholder="Input an arithmetic expression to calculate using Python-like syntax"
+            uk-tooltip="Supports '/', '+', '-', '*', '**' '//', '%' operands">
         </div>
     </div>
 
     <div align="center">
         <p uk-margin>
-            <label><input class="uk-radio" type="radio" name="round" checked value="yes"> Round </label>
+            <label><input class="uk-radio" type="radio" name="round" value="yes" checked> Round </label>
             <label><input class="uk-radio" type="radio" name="round" value="no"> Don't Round </label><br>
             <button type="submit" class="uk-button uk-button-primary">Calculate</button><br>
         <hr>
     </div>
 
     <div class="uk-flex uk-flex-center">
-        <div class="uk-card uk-card-default uk-card-body">Result</div><br>
+        <div class="uk-card uk-card-default uk-card-body">{{equation_res}}</div><br>
         <hr>
     </div>
 
